@@ -1,11 +1,20 @@
-//
-// Created by Johan Chevet on 3/5/21.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 10:02:00 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 13:39:32 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "libft.h"
+# include "../libft/libft.h"
 # include "mlx.h"
 # include "stdio.h"
 # include <math.h>
@@ -36,7 +45,8 @@ typedef struct s_sprite_plan
 	float	vdb;
 	float	vda;
 }t_plan;
-typedef struct s_frame {
+typedef struct s_frame 
+{
 	t_ipoint	pixel;
 	int			wall_height;
 	int			wall_start;
@@ -192,7 +202,6 @@ typedef struct s_settings
 	int	mapstart;
 	int	nb_enemy;
 	int	sound;
-	int	r;
 	int	f;
 	int	c;
 	int	s;
@@ -211,7 +220,10 @@ typedef struct s_sprite
 	t_texture		tex3;
 	t_texture		tex4;
 	t_texture		tex5;
+	t_texture		deadss1;
+	t_texture		deadss2;
 	t_sprite_list	*list;
+	clock_t			deadclock;
 	float			impact_dist;
 	float			dist;
 	int				yes;

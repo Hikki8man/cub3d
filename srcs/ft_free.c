@@ -1,6 +1,14 @@
-//
-// Created by Johan Chevet on 5/6/21.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 09:57:44 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 14:00:41 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
@@ -28,6 +36,8 @@ void 	free_tex(t_mlx *mlx)
 		mlx_destroy_image(mlx->mlx, mlx->destructible_wall.img);
 	if (mlx->door.img)
 		mlx_destroy_image(mlx->mlx, mlx->door.img);
+	if (mlx->sprite.deadss1.img)
+		mlx_destroy_image(mlx->mlx, mlx->sprite.deadss1.img);
 }
 
 void	destroy_img_img(t_mlx *mlx)
@@ -74,6 +84,8 @@ void 	destroy_tex_img(t_mlx *mlx)
 		mlx_destroy_image(mlx->mlx, mlx->hud.heart.tex.img);
 	if (mlx->hud.drinking.tex.img)
 		mlx_destroy_image(mlx->mlx, mlx->hud.drinking.tex.img);
+	if (mlx->sprite.deadss2.img)
+		mlx_destroy_image(mlx->mlx, mlx->sprite.deadss2.img);
 }
 
 void 	print_err(int err)

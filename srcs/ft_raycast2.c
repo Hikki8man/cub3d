@@ -1,6 +1,14 @@
-//
-// Created by Johan Chevet on 5/5/21.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_raycast2.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 09:59:13 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 13:49:43 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
@@ -44,6 +52,26 @@ void	sprite_plan(t_mlx *mlx)
 	}
 }
 
+static void	fov_shoot(t_mlx *mlx, t_sprite_list **elem)
+{
+	(*elem)->tex = mlx->sprite.tex2;
+	if ((mlx->ray.a < (mlx->player.a + 0.04)) && \
+	(mlx->ray.a > (mlx->player.a - 0.04)) && \
+	mlx->shot == 0 && mlx->player.shooting == 1)
+		player_shooting(mlx);
+}
+
+static void	dead_animation(t_mlx *mlx, t_sprite_list **e)
+{
+	clock_t	start;
+
+	start = clock();
+	if (start < mlx->sprite.deadclock + 100000)
+		(*e)->tex = mlx->sprite.deadss1;
+	else
+		mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] = '-';
+}
+
 void	sprite_hit(t_mlx *mlx)
 {
 	t_sprite_list	*elem;
@@ -62,13 +90,10 @@ void	sprite_hit(t_mlx *mlx)
 	else if (mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '5')
 		elem->tex = mlx->sprite.tex5;
 	else if (mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '2')
-	{
-		elem->tex = mlx->sprite.tex2;
-		if ((mlx->ray.a < (mlx->player.a + 0.04)) && \
-			(mlx->ray.a > (mlx->player.a - 0.04)) && \
-			mlx->shot == 0 && \
-			mlx->player.shooting == 1)
-			player_shooting(mlx);
-	}
+		fov_shoot(mlx, &elem);
+	if (mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '9')
+		dead_animation(mlx, &elem);
+	if (mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '-')
+		elem->tex = mlx->sprite.deadss2;
 	add_front(&mlx->sprite.list, elem);
 }

@@ -1,6 +1,14 @@
-//
-// Created by Stellar on 02/05/2021.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_action2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 09:56:40 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 13:36:59 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
@@ -49,7 +57,8 @@ void	player_shooting(t_mlx *mlx)
 	if (current_enemy->hp <= 0)
 	{
 		play_sound(mlx, "afplay ./sounds/ahh.mp3 &");
-		mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] = '0';
+		mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] = '9';
+		mlx->sprite.deadclock = clock();
 	}
 	mlx->shot = 1;
 }

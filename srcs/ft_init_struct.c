@@ -1,6 +1,14 @@
-//
-// Created by Stellar on 27/04/2021.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init_struct.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 09:58:15 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 13:37:43 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
@@ -40,7 +48,6 @@ static void	init_player(t_mlx *mlx)
 
 static void	init_settings(t_mlx *mlx)
 {
-	mlx->settings.r = 0;
 	mlx->settings.f = 0;
 	mlx->settings.c = 0;
 	mlx->settings.no = 0;
@@ -58,6 +65,8 @@ static void	init_settings(t_mlx *mlx)
 	mlx->map.x_max = 0;
 	mlx->map.y_max = 1;
 	mlx->settings.sound = OFF;
+	mlx->settings.res_width = 1000;
+	mlx->settings.res_height = 1000;
 }
 
 void	init_all(t_mlx *mlx)

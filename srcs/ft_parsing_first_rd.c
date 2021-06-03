@@ -1,12 +1,20 @@
-//
-// Created by Johan Chevet on 5/8/21.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing_first_rd.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 09:58:51 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 10:11:31 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
 int	check_settings(t_mlx *mlx)
 {
-	if (mlx->settings.c == 1 && mlx->settings.f == 1 && mlx->settings.r == 1 \
+	if (mlx->settings.c == 1 && mlx->settings.f == 1 \
 	&& mlx->tex_n.img && mlx->tex_s.img && mlx->tex_w.img && mlx->tex_e.img \
 	&& mlx->settings.s <= 1 && mlx->settings.s3 <= 1 && mlx->settings.s4 <= 1 \
 	&& mlx->settings.s5 <= 1 && mlx->settings.no == 1 \

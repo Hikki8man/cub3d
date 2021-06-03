@@ -1,6 +1,14 @@
-//
-// Created by Stellar on 27/04/2021.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_set.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 09:59:17 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 13:53:13 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
@@ -52,7 +60,9 @@ void	set_c4(t_mlx *mlx)
 	set_hud_images(mlx, &mlx->hud.c4inv, "./hud/c4onground.xpm");
 	if (get_texture(mlx, &mlx->wallc4, "./hud/c4onwall.xpm") < 0 \
 	|| get_texture(mlx, &mlx->destructible_wall, "./hud/walldestructible.xpm") \
-	< 0 || get_texture(mlx, &mlx->door, "./textures/doormine.xpm") < 0)
+	< 0 || get_texture(mlx, &mlx->door, "./textures/doormine.xpm") < 0 \
+	|| get_texture(mlx, &mlx->sprite.deadss1, "./textures/deadss.xpm") < 0 \
+	|| get_texture(mlx, &mlx->sprite.deadss2, "./textures/dedss.xpm") < 0)
 		exit_error(mlx, 1);
 }
 

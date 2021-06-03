@@ -1,6 +1,15 @@
-//
-// Created by Johan Chevet on 5/8/21.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_settings.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 09:57:55 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 10:11:31 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cub3d.h"
 
 static t_texture	*texture_address(t_texture *tex, int *set)
@@ -39,32 +48,6 @@ static int	get_texture_path(char *s, t_mlx *mlx)
 	return (1);
 }
 
-static int	get_res(char *s, t_mlx *mlx)
-{
-	int	t[2];
-	int	i;
-
-	mlx->settings.r += 1;
-	i = 0;
-	s++;
-	if (*s != ' ')
-		return (-1);
-	while (i < 2)
-	{
-		s += skip_space(s);
-		t[i] = ft_atoi(s);
-		s += intlen(t[i]);
-		i++;
-	}
-	if (*s != 0)
-		return (-1);
-	mlx->settings.res_width = t[0];
-	mlx->settings.res_height = t[1];
-	if (check_res(mlx) == -1)
-		return (-1);
-	return (1);
-}
-
 static int	get_color(char *s, int *color, int *nb)
 {
 	int	t[3];
@@ -99,9 +82,7 @@ int 	get_settings(char *s, int start, t_mlx *mlx)
 	int	check;
 
 	check = 1;
-	if (*s == 'R')
-		check = get_res(s, mlx);
-	else if (*s == 'F')
+	 if (*s == 'F')
 		check = get_color(s, &mlx->settings.f_color, &mlx->settings.f);
 	else if (*s == 'C')
 		check = get_color(s, &mlx->settings.c_color, &mlx->settings.c);

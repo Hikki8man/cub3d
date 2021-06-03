@@ -1,6 +1,14 @@
-//
-// Created by Johan Chevet on 5/5/21.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_raycast.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 09:59:09 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 12:29:14 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
@@ -59,6 +67,8 @@ void	ray_hit(t_mlx *mlx)
 		if (mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '2' ||
 			mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '3' ||
 			mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '4' ||
+			mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '9' ||
+			mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '-' ||
 			mlx->map.map[mlx->ray.m.y][mlx->ray.m.x] == '5')
 			sprite_hit(mlx);
 		mlx->sprite.yes = 1;

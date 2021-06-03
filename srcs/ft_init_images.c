@@ -1,6 +1,14 @@
-//
-// Created by Johan Chevet on 5/10/21.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init_images.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/03 09:58:08 by jchevet           #+#    #+#             */
+/*   Updated: 2021/06/03 12:14:22 by jchevet          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
@@ -41,6 +49,8 @@ void	init_tex_img(t_mlx *mlx)
 	mlx->hud.holding_gun.tex.img = NULL;
 	mlx->hud.shooting_gun.tex.img = NULL;
 	mlx->hud.spriteinv.tex.img = NULL;
+	mlx->sprite.deadss1.img = NULL;
+	mlx->sprite.deadss2.img = NULL;
 }
 
 void 	init_mlx(t_mlx *mlx)

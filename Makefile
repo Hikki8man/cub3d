@@ -29,19 +29,18 @@ SRCSF =	main.c \
 		ft_utils2.c \
 		ft_wall.c \
 		ft_main_args.c \
-		ft_check.c \
 		ft_img_to_bmp.c \
 		ft_minimap.c \
 		ft_exit.c
 SRCS =	$(addprefix srcs/, ${SRCSF})
 INDIR = includes
 CC = 	gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -O3
+CFLAGS = -Wall -Wextra -Werror -O3
 OBJS =  ${SRCS:.c=.o}
 
 all		:	${NAME}
 
-srcs/%.o : srcs/%.c ${INDIR}
+srcs/%.o : srcs/%.c ${INDIR} libft/libft.h
 			${CC} ${CFLAGS} -c $< -o $@ -I ${INDIR}
 
 ${NAME}: ${OBJS}
@@ -49,7 +48,7 @@ ${NAME}: ${OBJS}
 			make -C ${MLX}
 			${CC} -L ${MLX} -lmlx -framework OpenGL -framework AppKit -o ${NAME} ${OBJS} libft/libft.a ${MLX}/libmlx.a
 
-run		:	${OBJS}
+run		:	${NAME}
 			./${NAME} map.cub
 
 libft	:
