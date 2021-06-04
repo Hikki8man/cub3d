@@ -20,40 +20,20 @@ static void 	get_sprite_values(t_mlx *mlx)
 	mlx->frame.pixel.y = mlx->frame.sprite_start;
 }
 
-static void	pos_in_plan2(t_mlx *mlx, t_sprite_list *l)
+int	check_side(t_mlx *mlx, t_sprite_list *l)
 {
-	if (mlx->player.y >= l->pos.y && mlx->player.x > l->pos.x && \
-	l->s.x <= l->pos.x && mlx->player.ydir < 0)
-		mlx->sprite.impact_dist *= -1;
-	if (mlx->player.y > l->pos.y && mlx->player.x <= l->pos.x && \
-	l->s.x <= l->pos.x && (mlx->player.ydir < 0 || mlx->player.xdir == 1))
-		mlx->sprite.impact_dist *= -1;
-	if (mlx->player.y < l->pos.y && mlx->player.x >= l->pos.x && \
-	l->s.x >= l->pos.x && mlx->player.ydir > 0)
-		mlx->sprite.impact_dist *= -1;
-	if (mlx->player.y <= l->pos.y && mlx->player.x < l->pos.x && \
-	l->s.x >= l->pos.x && mlx->player.ydir > 0)
-		mlx->sprite.impact_dist *= -1;
-	if (mlx->player.xdir == -1)
-		mlx->sprite.impact_dist *= -1;
-}
-
-static void	pos_in_plan(t_mlx *mlx, t_sprite_list *l)
-{
-	mlx->sprite.impact_dist = hypotf(l->pos.x - l->s.x, l->pos.y - l->s.y);
-	if (mlx->player.y >= l->pos.y && mlx->player.x > l->pos.x && \
-	l->s.x >= l->pos.x && mlx->player.ydir > 0)
-		mlx->sprite.impact_dist *= -1;
-	if (mlx->player.y > l->pos.y && mlx->player.x <= l->pos.x && \
-	l->s.x >= l->pos.x && mlx->player.ydir > 0)
-		mlx->sprite.impact_dist *= -1;
-	if (mlx->player.y < l->pos.y && mlx->player.x >= l->pos.x && \
-	l->s.x <= l->pos.x && mlx->player.ydir < 0)
-		mlx->sprite.impact_dist *= -1;
-	if (mlx->player.y <= l->pos.y && mlx->player.x < l->pos.x && \
-	l->s.x <= l->pos.x && (mlx->player.ydir < 0 || mlx->player.xdir == 1))
-		mlx->sprite.impact_dist *= -1;
-	pos_in_plan2(mlx, l);
+	if (mlx->player.y > l->pos.y && l->s.x > l->pos.x)
+		return (1);
+	if (mlx->player.y < l->pos.y && l->s.x < l->pos.x)
+		return (1);
+	if (mlx->player.y == l->pos.y)
+	{
+		if (mlx->player.x < l->pos.x && l->s.y > l->pos.y)
+			return (1);
+		if (mlx->player.x > l->pos.x && l->s.y > l->pos.y)
+			return (1);
+	}
+	return (-1);
 }
 
 static void	get_sprite_color_index(t_mlx *mlx, t_sprite_list *l)
@@ -86,11 +66,15 @@ void 	draw_sprite(t_mlx *mlx)
 		mlx->frame.sprite_height = (int)(mlx->settings.res_height * 64 \
 		/ l->mid_dist);
 		get_sprite_values(mlx);
-		pos_in_plan(mlx, l);
-		while (mlx->frame.pixel.y < mlx->frame.sprite_end)
+		mlx->sprite.impact_dist = hypotf(l->pos.x - l->s.x, l->pos.y - l->s.y);
+		mlx->sprite.impact_dist *= check_side(mlx, l);
+		if (mlx->sprite.impact_dist > -32 && mlx->sprite.impact_dist < 32)
 		{
-			get_sprite_color_index(mlx, l);
-			mlx->frame.pixel.y++;
+			while (mlx->frame.pixel.y < mlx->frame.sprite_end)
+			{
+				get_sprite_color_index(mlx, l);
+				mlx->frame.pixel.y++;
+			}
 		}
 		l = l->next;
 	}

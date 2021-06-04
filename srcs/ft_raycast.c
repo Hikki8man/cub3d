@@ -105,7 +105,7 @@ void	ray_cast(t_mlx *mlx)
 		ray_hit(mlx);
 		get_ray_pos_and_dist(mlx);
 		texture_to_put(mlx);
-		sprite_plan(mlx);
+		inter_plan(mlx);
 		draw_frame(mlx);
 		mlx->ray.a -= 1.047198 * mlx->up / mlx->settings.res_width;
 		fix_angle(&mlx->ray.a);

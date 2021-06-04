@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -35,17 +34,7 @@ typedef struct s_point
 	float	y;
 }t_point;
 
-typedef struct s_sprite_plan
-{
-	t_point	rotate90;
-	t_point	n;
-	t_point	p;
-	float	vcob;
-	float	vco;
-	float	vdb;
-	float	vda;
-}t_plan;
-typedef struct s_frame 
+typedef struct s_frame
 {
 	t_ipoint	pixel;
 	int			wall_height;
@@ -229,6 +218,15 @@ typedef struct s_sprite
 	int				yes;
 }t_sprite;
 
+typedef struct s_plan
+{
+	t_point			n;
+	t_point			p;
+	float			vda;
+	float			vdb;
+	t_sprite_list	*l;
+}t_plan;
+
 typedef struct s_mlx
 {
 	void		*mlx;
@@ -251,6 +249,7 @@ typedef struct s_mlx
 	t_movement	move;
 	t_sprite	sprite;
 	t_hud		hud;
+	t_plan		p;
 	int			shot;
 	int			up;
 }t_mlx;
@@ -337,9 +336,10 @@ void			step_on_lego(t_mlx *mlx);
 //raycast
 void			ray_cast(t_mlx *mlx);
 void			sprite_hit(t_mlx *mlx);
-void			sprite_plan(t_mlx *mlx);
 void			texture_to_put(t_mlx *mlx);
 void			reset_ray(t_mlx *mlx);
+void			inter_plan(t_mlx *mlx);
+int				check_side(t_mlx *mlx, t_sprite_list *l);
 
 //draw
 void			draw_frame(t_mlx *mlx);
@@ -359,9 +359,6 @@ void			mousemove(t_mlx *mlx);
 void			parsing(t_mlx *mlx);
 int				get_settings(char *s, int start, t_mlx *mlx);
 int				check_settings(t_mlx *mlx);
-int				check_res(t_mlx *mlx);
 void			args(t_mlx *mlx, char *map);
-
-int				create_bitmap(t_mlx *mlx);
 
 #endif

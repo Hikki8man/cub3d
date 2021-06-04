@@ -23,35 +23,6 @@ void	reset_ray(t_mlx *mlx)
 	mlx->sprite.list = NULL;
 }
 
-void	sprite_plan(t_mlx *mlx)
-{
-	t_plan			p;
-	t_sprite_list	*l;
-
-	l = mlx->sprite.list;
-	while (l)
-	{
-		p.rotate90.x = -mlx->player.ydir;
-		p.rotate90.y = mlx->player.xdir;
-		p.n.x = l->pos.x + p.rotate90.x + 0.01;
-		p.n.y = l->pos.y + p.rotate90.y;
-		p.p.x = mlx->player.x + mlx->ray.xo + 0.01;
-		p.p.y = mlx->player.y + mlx->ray.yo + 0.01;
-		p.vda = p.p.y - ((mlx->player.y - p.p.y) \
-			/ (mlx->player.x - p.p.x) * p.p.x);
-		p.vdb = p.n.y - ((l->pos.y - p.n.y) / (l->pos.x - p.n.x) * p.n.x);
-		p.vco = -((l->pos.y - p.n.y) / (l->pos.x - p.n.x)) + \
-		(mlx->player.y - p.p.y) / (mlx->player.x - p.p.x);
-		p.vcob = -p.vdb + p.vda + 0.01;
-		if (mlx->player.x == p.p.x)
-			l->s.x = p.p.x;
-		else
-			l->s.x = -(p.vcob / p.vco);
-		l->s.y = (l->pos.y - p.n.y) / (l->pos.x - p.n.x) * l->s.x + p.vdb;
-		l = l->next;
-	}
-}
-
 static void	fov_shoot(t_mlx *mlx, t_sprite_list **elem)
 {
 	(*elem)->tex = mlx->sprite.tex2;

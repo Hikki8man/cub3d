@@ -6,7 +6,7 @@
 /*   By: jchevet <jchevet@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/03 09:58:15 by jchevet           #+#    #+#             */
-/*   Updated: 2021/06/03 13:37:43 by jchevet          ###   ########lyon.fr   */
+/*   Updated: 2021/06/04 13:00:30 by jchevet          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	init_settings(t_mlx *mlx)
 	mlx->settings.s5 = 0;
 	mlx->map.x_max = 0;
 	mlx->map.y_max = 1;
-	mlx->settings.sound = OFF;
+	mlx->settings.sound = ON;
 	mlx->settings.res_width = 1000;
 	mlx->settings.res_height = 1000;
 }

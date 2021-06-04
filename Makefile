@@ -31,6 +31,7 @@ SRCSF =	main.c \
 		ft_main_args.c \
 		ft_img_to_bmp.c \
 		ft_minimap.c \
+		ft_sprite_plan.c \
 		ft_exit.c
 SRCS =	$(addprefix srcs/, ${SRCSF})
 INDIR = includes
