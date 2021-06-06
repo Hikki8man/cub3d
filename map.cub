@@ -4,7 +4,7 @@ F 112, 112, 112
 NO ./textures/wood.xpm
 EA ./textures/wall2.xpm
 WE ./textures/stone.xpm
-SO ./textures/wood.xpm
+SO ./textures/art.xpm
 S ./textures/ss.xpm
 S5 ./textures/c4onground.xpm
 S3 ./textures/sprite.xpm
