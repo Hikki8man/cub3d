@@ -41,7 +41,7 @@ OBJS =  ${SRCS:.c=.o}
 
 all		:	${NAME}
 
-srcs/%.o : srcs/%.c ${INDIR} libft/libft.h
+srcs/%.o : srcs/%.c ${INDIR}/cub3d.h libft/libft.h
 			${CC} ${CFLAGS} -c $< -o $@ -I ${INDIR}
 
 ${NAME}: ${OBJS}
